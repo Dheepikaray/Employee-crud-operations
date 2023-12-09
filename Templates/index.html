@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    table, th, td {
+  border: 1px solid black;
+   border-collapse: collapse;
+}
+        .center {
+  margin-left: auto;
+  margin-right: auto;
+}
+    </style>
+</head>
+<body style="text-align:center">
+ <h3 > Employee List</h3>
+        <table class="table table-bordered center" style="border: 1px solid black;" >
+    <tr>
+        <th>EMPLOYEE NAME</th>
+        <th>EMPLOYEE ID</th>
+        <th>SALARY</th>
+        <th>DELETE</th>
+        <th>UPDATE</th>
+        
+    </tr>
+    {% for x in data %}
+    <tr>
+        <td>{{ x.name }}</td>
+        <td>{{ x.employee_id }}</td>
+        <td>{{x.salary}}</td>
+        <td><form action="{% url 'delt' x.id %}" method="POST" class="d-inline-block">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-outline-danger" value="Delete"/>
+        </form> </td>
+        <td><form action="{% url 'update' x.id %}"  class="d-inline-block">
+
+            <input type="submit" class="btn btn-outline-danger" value="Update"/>
+        </form> </td>
+
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>

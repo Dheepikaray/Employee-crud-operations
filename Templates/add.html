@@ -1,0 +1,18 @@
+
+{% load crispy_forms_filters %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="text-center display-4">Add Todo</h1>
+
+        </div>
+        <div class="col-md-8">
+            <form method="POST">
+                {% csrf_token %}
+                {{form|crispy}}
+                {{ form.date.errors }}
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Add</button>
+            </form>
+        </div>
+    </div>
+</div>
